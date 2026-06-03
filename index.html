@@ -1,1 +1,714 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexander Journeaux — Software Engineer</title>
+    <link rel="stylesheet" href="global.css" />
+    <style>
+      /* ---- HERO ---- */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 5rem;
+      }
 
+      .hero-eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .hero-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 2rem;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .hero-name {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-name .accent {
+        color: var(--accent);
+      }
+
+      .hero-title {
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: clamp(1rem, 3vw, 1.6rem);
+        color: var(--muted);
+        margin-bottom: 2.5rem;
+        letter-spacing: -0.01em;
+      }
+
+      .hero-desc {
+        max-width: 560px;
+        color: var(--dim);
+        line-height: 1.8;
+        margin-bottom: 3rem;
+        font-size: 0.875rem;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 4rem;
+        font-size: 0.7rem;
+        color: var(--muted);
+        letter-spacing: 0.05em;
+      }
+
+      .status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: pulse 2s infinite;
+      }
+
+      /* ---- ABOUT ---- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .about-text p {
+        color: var(--dim);
+        margin-bottom: 1.25rem;
+        line-height: 1.9;
+        font-size: 0.875rem;
+      }
+
+      .about-text p strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .skills-block {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        padding: 2rem;
+        border-radius: 4px;
+      }
+
+      .skills-block h3 {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+      }
+
+      .skill-group {
+        margin-bottom: 1.5rem;
+      }
+      .skill-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .skill-group-label {
+        font-size: 0.65rem;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      /* ---- PROJECTS ---- */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .project-card:hover {
+        border-color: rgba(0, 229, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-card.featured {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .project-card.featured::before {
+        opacity: 1;
+      }
+
+      .project-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+
+      .project-name {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.02em;
+      }
+
+      .project-desc {
+        color: var(--dim);
+        font-size: 0.8rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        font-size: 0.7rem;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        transition: color 0.2s;
+      }
+
+      .project-link:hover {
+        color: var(--accent);
+      }
+
+      .project-terminal {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1.5rem;
+        font-size: 0.75rem;
+        line-height: 2;
+      }
+
+      .term-line {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .term-prompt {
+        color: var(--accent);
+        user-select: none;
+      }
+      .term-cmd {
+        color: var(--text);
+      }
+      .term-out {
+        color: var(--muted);
+        margin-left: 1.5rem;
+      }
+      .term-key {
+        color: var(--accent2);
+      }
+
+      /* ---- CONTACT ---- */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .contact-text {
+        font-size: 0.875rem;
+        color: var(--dim);
+        line-height: 1.9;
+        margin-bottom: 2rem;
+      }
+
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        text-decoration: none;
+        color: var(--dim);
+        font-size: 0.8rem;
+        transition: all 0.2s;
+      }
+
+      .contact-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .contact-link-icon {
+        font-size: 1rem;
+        width: 20px;
+        text-align: center;
+      }
+
+      .contact-link-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 0.1rem;
+      }
+
+      .availability-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 2rem;
+      }
+
+      .availability-card h3 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .availability-card p {
+        color: var(--dim);
+        font-size: 0.8rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .avail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.75rem;
+      }
+
+      .avail-row:last-of-type {
+        border-bottom: none;
+      }
+      .avail-label {
+        color: var(--muted);
+      }
+
+      .avail-value {
+        color: var(--green);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .avail-value::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      /* ---- RESPONSIVE ---- */
+      @media (max-width: 768px) {
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .project-card.featured {
+          grid-column: auto;
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="nav-logo">AJ<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-eyebrow fade-up">
+        Software Engineer — Southampton, UK
+      </div>
+      <h1 class="hero-name fade-up delay-1">
+        Alexander<br /><span class="accent">Journeaux</span>
+      </h1>
+      <p class="hero-desc fade-up delay-2">
+        First-class Software Engineering graduate. I have experience building
+        mobile apps with React Native and TypeScript, python, and web
+        applications with React and Node.js. I have a background in team
+        leadership and operations that has given me real-world problem-solving
+        skills and a practical mindset.
+      </p>
+      <div class="hero-cta fade-up delay-3">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-status fade-up delay-4">
+        <span class="status-dot"></span>
+        Open to junior software engineering roles
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <span class="section-num">01 //</span>
+        <h2 class="section-title">About</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a
+            <strong>first-class Software Engineering graduate</strong> from
+            Southampton Solent University, with an interest in mobile and web
+            development.
+          </p>
+          <p>
+            Before re-skilling into tech, I spent years in retail management —
+            leading teams, launching a store, and solving operational problems
+            under pressure. I stepped down from a Retail Management role
+            deliberately to pursue engineering. That kind of
+            <strong>intentional career change</strong>
+            shapes how I approach every project: with ownership, practicality,
+            and care.
+          </p>
+          <p>
+            My dissertation produced a
+            <strong>solo journaling RPG app</strong> built with React Native,
+            which I continue developing as an ongoing personal project (Lone
+            Scribe). It focused on offline-first architectures, good UX, and
+            software that respects user privacy.
+          </p>
+        </div>
+        <div class="skills-block">
+          <h3>// Technical Skills</h3>
+          <div class="skill-group">
+            <div class="skill-group-label">Languages</div>
+            <div class="skill-tags">
+              <span class="tag highlight">TypeScript</span>
+              <span class="tag highlight">JavaScript</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Frameworks</div>
+            <div class="skill-tags">
+              <span class="tag highlight">React Native</span>
+              <span class="tag highlight">Expo</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Data</div>
+            <div class="skill-tags">
+              <span class="tag">SQLite</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Tooling</div>
+            <div class="skill-tags">
+              <span class="tag">Git / GitHub</span>
+              <span class="tag">Figma</span>
+              <span class="tag">VS Code</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Practices</div>
+            <div class="skill-tags">
+              <span class="tag">Agile</span>
+              <span class="tag">Usability Testing</span>
+              <span class="tag">MVP Design</span>
+              <span class="tag">Wireframing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <span class="section-num">02 //</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card featured">
+          <div>
+            <div class="project-label">★ Dissertation Project</div>
+            <h3 class="project-name">Solo Journaling RPG App</h3>
+            <p class="project-desc">
+              A cross-platform mobile app enabling users to create and play solo
+              journaling role-playing games. Features dice-rolling mechanics,
+              prompt tables, structured journal entry saving, and an in-app RPG
+              creator. Built offline-first using local SQLite — no account
+              required, no data leaves the device.
+            </p>
+            <div class="project-tech">
+              <span class="tag highlight">React Native</span>
+              <span class="tag highlight">TypeScript</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Expo</span>
+              <span class="tag">Figma</span>
+            </div>
+          </div>
+          <div class="project-terminal">
+            <div class="term-line">
+              <span class="term-prompt">$</span
+              ><span class="term-cmd">describe project</span>
+            </div>
+            <div class="term-out">
+              <span class="term-key">platform:</span> iOS + Android
+            </div>
+            <div class="term-out">
+              <span class="term-key">storage:</span> SQLite
+            </div>
+            <div class="term-out">
+              <span class="term-key">privacy:</span> 100% local data
+            </div>
+            <div class="term-out">
+              <span class="term-key">eval:</span> SUS usability survey
+            </div>
+            <div class="term-out">
+              <span class="term-key">grade:</span> first class ✓
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-label">WIP — Personal Project</div>
+          <h3 class="project-name">Lone Scribe</h3>
+          <p class="project-desc">
+            A full redesign of the dissertation app, incorporating lessons
+            learned from the original build. Expanding the feature set with
+            improved UX, visual theming, and a more polished interface.
+          </p>
+          <div class="project-tech">
+            <span class="tag highlight">React Native</span>
+            <span class="tag highlight">TypeScript</span>
+            <span class="tag">Expo</span>
+          </div>
+          <div class="project-links">
+            <a
+              href="https://github.com/alexanderj122/Lone-Scribe"
+              class="project-link"
+              target="_blank"
+              >↗ GitHub</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-label">University Team Project</div>
+          <h3 class="project-name">Recipe Sharing Platform</h3>
+          <p class="project-desc">
+            A full-stack web application for sharing and discovering recipes.
+            Built across the entire stack — from backend API to frontend UI.
+          </p>
+          <div class="project-tech">
+            <span class="tag highlight">JavaScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Full Stack</span>
+          </div>
+          <div class="project-links"></div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-label">University Team Project</div>
+          <h3 class="project-name">University Timetabling Prototype</h3>
+          <p class="project-desc">
+            A collaborative scheduling application prototype for university
+            timetabling, developed as a group project using Agile practices.
+          </p>
+          <div class="project-tech">
+            <span class="tag highlight">TypeScript</span>
+            <span class="tag highlight">React</span>
+            <span class="tag">Agile</span>
+          </div>
+          <div class="project-links"></div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-label">Python</div>
+          <h3 class="project-name">Sudoku Solver</h3>
+          <p class="project-desc">
+            A university project involving a regression algorithm to solve
+            Sudoku puzzles.
+          </p>
+          <div class="project-tech">
+            <span class="tag highlight">Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <span class="section-num">03 //</span>
+        <h2 class="section-title">Contact</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-text">
+            I'm actively looking for junior software engineering roles — web or
+            mobile development. If you're interested in working together, or
+            just want to chat about code and career stuff, feel free to reach
+            out. If you're building something interesting, I'd love to hear
+            about it.
+          </p>
+          <div class="contact-links">
+            <a
+              href="mailto:AlexanderJourneaux122@gmail.com"
+              class="contact-link"
+            >
+              <span class="contact-link-icon">✉</span>
+              <div>
+                <span class="contact-link-label">Email</span>
+                AlexanderJourneaux122@gmail.com
+              </div>
+            </a>
+            <a
+              href="https://github.com/alexanderj122"
+              class="contact-link"
+              target="_blank"
+            >
+              <span class="contact-link-icon">⌥</span>
+              <div>
+                <span class="contact-link-label">GitHub</span>
+                github.com/alexanderj122
+              </div>
+            </a>
+            <a
+              href="https://linkedin.com/in/alexander-journeaux"
+              class="contact-link"
+              target="_blank"
+            >
+              <span class="contact-link-icon">↗</span>
+              <div>
+                <span class="contact-link-label">LinkedIn</span>
+                linkedin.com/in/alexander-journeaux
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="availability-card">
+          <h3>Availability</h3>
+          <p>
+            Currently open to full-time junior roles and internships. Based in
+            Southampton — open to remote or hybrid.
+          </p>
+          <div class="avail-row">
+            <span class="avail-label">Status</span>
+            <span class="avail-value">Actively looking</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-label">Start date</span>
+            <span class="avail-value">Immediate</span>
+          </div>
+          <div class="avail-row">
+            <span class="avail-label">Preferred roles</span>
+            <span class="avail-label" style="color: var(--dim)"
+              >Junior Web Dev, Mobile Dev, Data Analytics</span
+            >
+          </div>
+          <div class="avail-row">
+            <span class="avail-label">Location</span>
+            <span class="avail-label" style="color: var(--dim)"
+              >Southampton / Remote</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Alexander Journeaux</span>
+      <span style="color: var(--border)">—</span>
+      <span>Built with HTML, CSS.</span>
+    </footer>
+  </body>
+</html>
