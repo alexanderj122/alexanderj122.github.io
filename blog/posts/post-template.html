@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- UPDATE: Change this to your post title -->
+  <title>Post Title — Alexander Journeaux</title>
+  <link rel="stylesheet" href="../../global.css" />
+  <style>
+    .post-header {
+      padding-top: 8rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+
+    .post-back:hover { color: var(--accent); }
+
+    .post-category {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--accent2);
+      color: var(--accent2);
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+    }
+
+    .post-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+
+    .post-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ---- POST BODY ---- */
+    .post-body {
+      max-width: 680px;
+    }
+
+    .post-body p {
+      color: var(--dim);
+      font-size: 0.9rem;
+      line-height: 1.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin: 3rem 0 1rem;
+      color: var(--text);
+    }
+
+    .post-body h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+      margin: 2rem 0 0.75rem;
+      color: var(--text);
+    }
+
+    .post-body strong { color: var(--text); font-weight: 500; }
+
+    .post-body a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,229,255,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .post-body a:hover { border-color: var(--accent); }
+
+    .post-body code {
+      font-family: var(--font-mono);
+      font-size: 0.8em;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.1em 0.4em;
+      border-radius: 2px;
+      color: var(--accent);
+    }
+
+    .post-body pre {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: var(--dim);
+    }
+
+    .post-body pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    .post-body blockquote {
+      border-left: 3px solid var(--accent2);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .post-body ul, .post-body ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--dim);
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
+
+    .post-body li { margin-bottom: 0.4rem; }
+
+    /* ---- POST FOOTER ---- */
+    .post-footer {
+      margin-top: 5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: gap;
+    }
+
+    .post-footer a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .post-footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">AJ<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="post-header fade-up">
+    <a href="/blog/" class="post-back">← All posts</a>
+    <!-- UPDATE: Change category to match your post -->
+    <div class="post-category">Career</div>
+    <!-- UPDATE: Your post title -->
+    <h1 class="post-title">Post title goes here</h1>
+    <!-- UPDATE: Publication date -->
+    <span class="post-date">June 2026</span>
+  </section>
+
+  <section>
+    <div class="post-body fade-up delay-1">
+
+      <!--
+        =============================================
+        WRITE YOUR POST CONTENT BELOW THIS LINE.
+
+        Use standard HTML:
+          <p> for paragraphs
+          <h2> for section headings
+          <h3> for sub-headings
+          <strong> for bold emphasis
+          <code> for inline code
+          <pre><code> for code blocks
+          <blockquote> for pull quotes
+          <ul>/<ol> for lists
+        =============================================
+      -->
+
+      <p>
+        Start writing here. This is the opening paragraph of your post — 
+        make it count, it's what gets people to keep reading.
+      </p>
+
+      <h2>A Section Heading</h2>
+
+      <p>
+        More content here. You can keep going with as many sections as you need.
+      </p>
+
+      <blockquote>
+        A memorable quote or key insight can go in a blockquote like this.
+      </blockquote>
+
+      <h2>Another Section</h2>
+
+      <p>
+        Code blocks look like this:
+      </p>
+
+      <pre><code>// Example code block
+const greeting = "Hello, world!";
+console.log(greeting);</code></pre>
+
+      <p>
+        And inline code looks like <code>this</code>.
+      </p>
+
+      <!-- POST FOOTER -->
+      <div class="post-footer">
+        <a href="/blog/">← Back to all posts</a>
+        <a href="/#contact">Get in touch →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Alexander Journeaux</span>
+    <span style="color: var(--border)">—</span>
+    <a href="/blog/" style="color: var(--muted); text-decoration: none;">← Blog</a>
+  </footer>
+
+</body>
+</html>
